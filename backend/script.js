@@ -27,6 +27,14 @@ class Place{
         return this.placeAddress;
     };
 
+    getMapNumber(){
+        return this.mapNumber;
+    }
+
+    getCategory(){
+        return this.category;
+    };
+
 }
 
 /*
@@ -209,7 +217,557 @@ const locations =
         "Philadelphia, PA 19104",
         "91",
         "None"
+    ),
+    new Place
+    (
+        "Alpha Chi Rho",
+        "ChIJzycTQFLGxokRprWesFOAK_8",
+        "206 N 34th St, Philadelphia, PA 19104, USA",
+        "30",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Alpha Epsilon Pi",
+        "ChIJsY0d7BPHxokRO8MNv_-KrWY",
+        "4040 Walnut St, Philadelphia, PA 19104, USA",
+        "30",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Alpha Pi Lambda",
+        "ChIJoaUZgE3GxokRqU2UE8GPI9g",
+        "216 N 33rd St, Philadelphia, PA 19104, USA",
+        "37",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Delta Sigma Phi",
+        "ChIJmfB-QlLGxokRBCAwUNZ1MWo",
+        "214 N 34th St, Philadelphia, PA 19104, USA",
+        "45",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Lambda Chi Alpha",
+        "ChIJuwJa9FLGxokRgc1JK05WXmY",
+        "3401 Powelton Ave, Philadelphia, PA 19104, USA",
+        "35",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Pi Kappa Alpha",
+        "ChIJRcnrQVLGxokR_4o96y8tLyk",
+        "210 N 34th St, Philadelphia, PA 19104, USA",
+        "39",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Pi Kappa Phi",
+        "ChIJdTpA9lLGxokRz-VoSLIT97U",
+        "3405 Powelton Ave, Philadelphia, PA 19104, USA",
+        "34",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Sigma Alpha Mu",
+        "ChIJKVpHgAvHxokRBnoorT98w9g",
+        "3400 Powelton Ave, Philadelphia, PA 19104, USA",
+        "501",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Sigma Phi Epsilon",
+        "ChIJxQewePfGxokRX0uxyLB1Smc",
+        "4028 Walnut St, Philadelphia, PA 19104, USA",
+        "36",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Tau Kappa Epsilon",
+        "ChIJ9QMMVlLGxokR2vli-Av5jds",
+        "3421 Powelton Ave, Philadelphia, PA 19104, USA",
+        "32",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Theta Chi",
+        "ChIJm9X-Z1LGxokRJnKjWat4nQE",
+        "216 N 34th St, Philadelphia, PA 19104, USA",
+        "38",
+        "Fraternity House"
+    ),
+    new Place
+    (
+        "Gateway Garden",
+        "",
+        "",
+        "87A",
+        "None"
+    ),
+    new Place
+    (
+        "General Services Building",
+        "",
+        "",
+        "16",
+        "None"
+    ),
+    new Place
+    (
+        "Gerri C. LeBow Hall Bennett S. LeBow College of Business Goodwin College of Professional Studies",
+        "",
+        "",
+        "61",
+        "None"
+    ),
+    new Place
+    (
+        "Handschumacher Dining Center",
+        "",
+        "",
+        "9C",
+        "Dining"
+    ),
+    new Place
+    (
+        "Health Sciences Building",
+        "",
+        "",
+        "180",
+        "None"
+    ),
+    new Place
+    (
+        "James Creese Student Center",
+        "",
+        "",
+        "8",
+        "None"
+    ),
+    new Place
+    (
+        "Kline Law Building and Library Thomas R. Kline School of Law",
+        "",
+        "",
+        "90",
+        "None"
+    ),
+    new Place
+    (
+        "Korman Center",
+        "",
+        "",
+        "6",
+        "None"
+    ),
+    new Place
+    (
+        "Language and Communication Center",
+        "",
+        "",
+        "48",
+        "None"
+    ),
+    new Place
+    (
+        "LeBow Engineering Center College of Engineering",
+        "",
+        "",
+        "27",
+        "None"
+    ),
+    new Place
+    (
+        "Library Learning Terrace",
+        "",
+        "",
+        "29A",
+        "None"
+    ),
+    new Place
+    (
+        "Lincoln Plaza (3020 Market Street)",
+        "",
+        "",
+        "176",
+        "None"
+    ),
+    new Place
+    (
+        "Lindy Center for Civic Engagement",
+        "",
+        "",
+        "81A",
+        "None"
+    ),
+    new Place
+    (
+        "MacAlister Hall College of Arts and Sciences",
+        "",
+        "",
+        "9B",
+        "None"
+    ),
+    new Place
+    (
+        "Main Building (Admissions Visit Center)",
+        "",
+        "",
+        "1",
+        "None"
+    ),
+    new Place
+    (
+        "Mandell Theater",
+        "",
+        "",
+        "9A",
+        "None"
+    ),
+    new Place
+    (
+        "Nesbitt Hall Dornsife School of Public Health",
+        "",
+        "",
+        "13",
+        "None"
+    ),
+    new Place
+    (
+        "Northside Dining Terrace",
+        "",
+        "",
+        "19A",
+        "Dining"
+    ),
+    new Place
+    (
+        "Parking Garage",
+        "",
+        "",
+        "16",
+        "None"
+    ),
+    new Place
+    (
+        "Paul Peck Alumni Center",
+        "",
+        "",
+        "60",
+        "None"
+    ),
+    new Place
+    (
+        "Pearlstein Business Learning Center Charles D. Close School of Entrepreneurship",
+        "",
+        "",
+        "53",
+        "None"
+    ),
+    new Place
+    (
+        "PSA Building",
+        "",
+        "",
+        "47",
+        "None"
+    ),
+    new Place
+    (
+        "Randell Hall",
+        "",
+        "",
+        "2",
+        "None"
+    ),
+    new Place
+    (
+        "Raymond G. Perelman Center for Jewish Life",
+        "",
+        "",
+        "52",
+        "None"
+    ),
+    new Place
+    (
+        "Bentley Hall Pennoni Honors College",
+        "",
+        "",
+        "20",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Caneris Hall",
+        "",
+        "",
+        "26",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Kelly Hall",
+        "",
+        "",
+        "19",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Millennium Hall",
+        "",
+        "",
+        "31",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Myers Hall",
+        "",
+        "",
+        "21",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "North Hall",
+        "",
+        "",
+        "24",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Race Street Residences",
+        "",
+        "",
+        "29",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Towers Hall",
+        "",
+        "",
+        "22",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Van Rensselaer Hall",
+        "",
+        "",
+        "17",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Ross Commons",
+        "",
+        "",
+        "18",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Rush Building",
+        "",
+        "",
+        "10",
+        "Residence Hall"
+    ),
+    new Place
+    (
+        "Alpha Sigma Alpha",
+        "",
+        "",
+        "39",
+        "Sorority House"
+    ),
+    new Place
+    (
+        "Delta Phi Epsilon",
+        "",
+        "",
+        "46",
+        "Sorority House"
+    ),
+    new Place
+    (
+        "Delta Zeta",
+        "",
+        "",
+        "36",
+        "Sorority House"
+    ),
+    new Place
+    (
+        "Phi Sigma Sigma",
+        "",
+        "",
+        "33",
+        "Sorority House"
     )
+    ,
+    new Place
+    (
+        "Stratton Hall",
+        "",
+        "",
+        "5",
+        "None"
+    ),
+    new Place
+    (
+        "Tennis Courts",
+        "",
+        "",
+        "50",
+        "None"
+    ),
+    new Place
+    (
+        "The Study at University City (Hotel)",
+        "",
+        "",
+        "101",
+        "None"
+    ),
+    new Place
+    (
+        "The Summit",
+        "",
+        "",
+        "23",
+        "None"
+    ),
+    new Place
+    (
+        "University Crossings",
+        "",
+        "",
+        "89",
+        "None"
+    ),
+    new Place
+    (
+        "Urban Eatery",
+        "",
+        "",
+        "23A",
+        "Dining"
+    ),
+    new Place
+    (
+        "URBN Center Antoinette Westphal College of Media Arts & Design",
+        "",
+        "",
+        "71",
+        "None"
+    ),
+    new Place
+    (
+        "URBN Center Annex",
+        "",
+        "",
+        "72",
+        "None"
+    ),
+    new Place
+    (
+        "Vidas Athletic Complex",
+        "",
+        "",
+        "25",
+        "None"
+    ),
+    new Place
+    (
+        "W.W. Hagerty Library",
+        "",
+        "",
+        "15",
+        "None"
+    ),
+    new Place
+    (
+        "208 N. 35th Street",
+        "",
+        "208 N. 35th Street",
+        "41",
+        "None"
+    ),
+    new Place
+    (
+        "400 N. 31st Street",
+        "",
+        "400 N. 31st Street",
+        "56",
+        "None"
+    ),
+    new Place
+    (
+        "3101 Market Street",
+        "",
+        "3101 Market Street",
+        "88A",
+        "None"
+    ),
+    new Place
+    (
+        "3201 Arch Street",
+        "",
+        "",
+        "81",
+        "None"
+    )
+    ,
+    new Place
+    (
+        "3210 Cherry Street",
+        "",
+        "3210 Cherry Street",
+        "55B",
+        "None"
+    )
+    ,
+    new Place
+    (
+        "3401 Market Street School of Education",
+        "",
+        "",
+        "170",
+        "None"
+    )
+    ,
+    new Place
+    (
+        "3608 Powelton Avenue",
+        "",
+        "3608 Powelton Avenue",
+        "99",
+        "None"
+    ) ,
+    new Place
+    (
+        "3675 Market Street College of Computing & Informatics",
+        "",
+        "",
+        "178",
+        "None"
+    )
+    
+   
 ]
 
 function displayLocations(locations){
@@ -220,16 +778,16 @@ function displayLocations(locations){
         const {placeName : name, placeId : id, placeAddress : address, mapNumber : mapNum, category : cat} = place;
         // Place data of each place into div and place append to the locations div
         // Filter out locations with no google place id
-        if(id !== "" && id.toLowerCase() !== "none"){
-            locationsDiv.innerHTML += 
-            `<div>
-                Location: ${name}<br>
-                Address: ${address}<br>
-                Map Number: ${mapNum}<br>
-                Category: ${cat}<br>
-                <br>
-            </div>`
-        }
+       
+        locationsDiv.innerHTML += 
+        `<div>
+            Location: ${name}<br>
+            Address: ${address}<br>
+            Map Number: ${mapNum}<br>
+            Category: ${cat}<br>
+            <br>
+        </div>`
+        
     });
     
 }
