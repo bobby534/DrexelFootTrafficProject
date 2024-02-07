@@ -779,15 +779,19 @@ function displayLocations(locations){
         // Filter out locations with no address and name
         // Display only locations that have an address and a name
         if(name !== null && address !== null){
-            // Place data of each place into div and place append to the locations div
-            locationsDiv.innerHTML += 
-            `<div>
+            // Create a new div
+            let div = document.createElement('div');
+            // Append data of place instance to div
+            div.innerHTML += 
+            `
                 Location: ${name}<br>
                 Address: ${address}<br>
                 Map Number: ${mapNum}<br>
                 Category: ${cat}<br>
                 <br>
-            </div>`
+            `
+            // Append div to locations div in index.html file
+            locationsDiv.append(div);
         }
     });
     
