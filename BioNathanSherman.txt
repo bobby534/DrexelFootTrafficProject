@@ -1,0 +1,2 @@
+My name is Nathan Sherman, I am pursuing a Degree in Computer Science at Drexel University.
+I am experienced in many different coding languages such as Go, JavaScript, and C++.
