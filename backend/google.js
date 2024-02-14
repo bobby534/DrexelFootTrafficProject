@@ -34,7 +34,7 @@ class Place {
 
 async function getBusyness(place) {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: 'shell', args: [
+    const browser = await puppeteer.launch({ headless: false, args: [
         '--window-size=1920,600',
         '--single-process'
       ], });
@@ -93,14 +93,12 @@ async function getBusyness(place) {
     if (value.includes("Live")) live = true;
 
     // Attempt to get percentage
-    let percentage = null;
-    if (live) {
-        percentage = await page.$(`[data-hour="${new Date().getHours()}"] > .kFDszc > .ycghLd`);
-    } else {
-        percentage = await page.$(`[data-hour="${new Date().getHours()}"] > .kFDszc > .xuAAaf`);
+    let bars = await page.$$(`[data-hour="${new Date().getHours()}"] > .kFDszc > div`);
+    let percentage = 0;
+    for(let bar of bars){
+        let height = await page.evaluate(el => el.getAttribute("style"), bar);
+        percentage = parseFloat(height.split(":")[1].replace("px;", ""));
     }
-    const height = await page.evaluate(el => el.getAttribute("style"), percentage);
-    console.log(height)
 
     // Close browser
     await browser.close();
@@ -115,15 +113,15 @@ async function getBusyness(place) {
     }
 
     // Return the busyness
-    return { success: true, live: live, busyness: busyness };
+    return { success: true, live: live, busyness: busyness, percentage: (percentage / 75) * 100 };
 }
 
 async function main() {
     console.log(await getBusyness(new Place
         (
-            "Old City Food Market",
+            "Urban Eatery",
             "ChIJH_2okFHGxokR9BAIWfuSvyo",
-            "202 Market St, Philadelphia, PA 19106",
+            "3400 Lancaster Ave, Philadelphia, PA 19104, USA",
             "23A",
             "Dining"
         )))
