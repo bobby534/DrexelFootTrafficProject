@@ -35,8 +35,7 @@ class Place {
 async function getBusyness(place) {
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({ headless: false, args: [
-        '--window-size=1920,600',
-        '--single-process'
+        '--window-size=1920,600'
       ], });
     const context = browser.defaultBrowserContext();
     context.overridePermissions("https://www.google.com", ["geolocation"])
