@@ -6,35 +6,9 @@ puppeteer.use(StealthPlugin())
 
 const isUpperCase = (string) => /^[A-Z]*$/.test(string)
 
-class Place {
-
-    constructor(placeName, placeId, placeAddress, mapNumber, category) {
-        this.placeName = placeName;
-        this.placeId = placeId;
-        this.placeAddress = placeAddress;
-        this.mapNumber = mapNumber;
-        this.category = category;
-    };
-
-    getPlaceName() {
-        return this.placeName;
-    };
-
-    getPlaceId() {
-        return this.placeId;
-    };
-
-    getPlaceAddress() {
-        return this.placeAddress;
-    };
-
-}
-
-
-
 async function getBusyness(place) {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: false, args: [
+    const browser = await puppeteer.launch({ headless: true, args: [
         '--window-size=1920,600'
       ], });
     const context = browser.defaultBrowserContext();
@@ -42,7 +16,7 @@ async function getBusyness(place) {
     const page = await browser.newPage();
 
     // Search place on google maps
-    await page.goto(`https://www.google.com/search?client=safari&rls=en&q=${encodeURIComponent(place.getPlaceAddress() + " " + place.getPlaceName())}&ie=UTF-8&oe=UTF-8#ip=1`);
+    await page.goto(`https://www.google.com/search?client=safari&rls=en&q=${encodeURIComponent(place.address + " " + place.name)}&ie=UTF-8&oe=UTF-8#ip=1`);
     await page.waitForSelector("#result-stats")
 
     // Look for busyness element
@@ -115,15 +89,4 @@ async function getBusyness(place) {
     return { success: true, live: live, busyness: busyness, percentage: (percentage / 75) * 100 };
 }
 
-async function main() {
-    console.log(await getBusyness(new Place
-        (
-            "Urban Eatery",
-            "ChIJH_2okFHGxokR9BAIWfuSvyo",
-            "3400 Lancaster Ave, Philadelphia, PA 19104, USA",
-            "23A",
-            "Dining"
-        )))
-}
-
-main()
+exports.getBusyness = getBusyness
