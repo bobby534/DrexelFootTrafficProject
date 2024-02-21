@@ -1,0 +1,32 @@
+h1{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    text-align: center;
+    color: black;
+    font-style: italic;
+}
+
+div{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 103%;
+    border: 2px;
+    border-style: solid;
+    /* Define padding inside outside of border */
+    margin-bottom: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 5px;
+    /* Define padding inside of border */
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 3%;
+    padding-right: 3%;
+    background-color: rgb(210, 210, 74);
+}
+
+body{
+    background-color: rgb(93, 93, 239);
+}
