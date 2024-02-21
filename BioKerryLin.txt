@@ -1,1 +1,2 @@
-Movitated student pursuing a Computer science major. My name is Kerry Lin.
+My name is Kerry Lin, majoring in Computer science and I'm interested in creating softwares
+that are beneficial to society. I have a basic understanding of python and is currently learning html and css.
