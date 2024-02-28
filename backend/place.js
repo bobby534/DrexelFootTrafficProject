@@ -77,6 +77,84 @@ const places = [
         description:"Hip counter-serve pizzeria dishing up crispy, thin-crust pies made with creative toppings & sauces.",
         id:"e3ee1aff-1f31-4bca-8a74-88dda767c93d"
     },
+    {
+        name:"Wawa",
+        address:"3300 Market St, Philadelphia, PA 19104",
+        description:"Convenience store chain known for sandwiches & coffee. Many offer fuel & are open 24/7.",
+        id:"2ca744e9-1efe-4e6b-8d41-13c9564689de"
+    },
+    {
+        name:"Barnes & Noble at Drexel University",
+        address:"3250 Chestnut St, Philadelphia, PA 19104",
+        description:"Bookseller chain with a broad selection of titles for adults & kids, plus magazines & gifts.",
+        id:"2ca744e9-1efe-4e6b-8d41-13c9564689de"
+    },
+    {
+        name:"The Board and Brew",
+        address:"33rd & Chestnut, 3200 Chestnut St, Philadelphia, PA 19104",
+        description: "Restaurant",
+        id:"74c04169-787d-4a08-81fd-80d4a6b072c6"
+    },
+    {
+        name:"Hand and Stone Massage and Facial Spa",
+        address:"3200 Chestnut St 2nd Flr, Philadelphia, PA 19104",
+        description:"Massage therapist",
+        id:"8e8f91cc-06d5-4a50-96ca-02fcfb7d9715"
+    },
+    {
+        name:"Lascala's Fire University City",
+        address:"3200 Chestnut St, Philadelphia, PA 19104",
+        description:"Restaurant",
+        id:"19b70f1d-9d7a-482f-bc47-2565cd1db18f"
+    },
+    {
+        name:"Shake Shack University City",
+        address:"3200 Chestnut St, Philadelphia, PA 19104",
+        description:"Hip, counter-serve chain for gourmet takes on fast-food classics like burgers & frozen custard.",
+        id:"9b7e3ced-0cf0-4d02-9068-b700b71af36c"
+    },
+    {
+        name:"Supercuts",
+        address:"3200 Chestnut St, Philadelphia, PA 19104",
+        description:"Hair salon",
+        id:"a578caea-b7aa-422d-8df9-41d76e71fcc7"
+    },
+    {
+        name:"CM Chicken",
+        address:"3180 Chestnut St, Philadelphia, PA 19104",
+        description:"Chicken restaurant",
+        id:"771d5ca0-d9e2-4876-8667-131a6ff231aa"
+    },
+    {
+        name:"Greek from Greece, gfg café cuisine",
+        address:"107 N 33rd St, Philadelphia, PA 19104",
+        description:"Cafe",
+        id:"bfeba394-5406-4e42-904f-38a134b7382c"
+    },
+    {
+        name:"vybe urgent care",
+        address:"3550 Market St Ste 102, Philadelphia, PA 19104",
+        description:"Urgent care center",
+        id:"694090a3-aad3-425e-8206-a6558afdbfb5"
+    },
+    {
+        name:"Wells Fargo Bank",
+        address:"3550 Market St, Philadelphia, PA 19104",
+        description:"Bank",
+        id:"c2ce5f57-bca1-49ce-8508-ed0b867fd63e"
+    },
+    {
+        name:"Han Dynasty",
+        address:"3711 Market St, Philadelphia, PA 19104",
+        description:"Spicy Sichuan dishes like dan dan noodles are heat-rated by number at this informal restaurant.",
+        id:"549d6448-930d-4073-bcb6-4c92a5a2f8db"
+    },
+    {
+        name:"Market St & 38th St",
+        address:"Philadelphia, PA 19104",
+        description:"Bus stop",
+        id:"Bus stop"
+    }
 ]
 
 exports.places = places;
