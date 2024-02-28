@@ -71,8 +71,12 @@ const places = [
         description: null,
         id:"92ee19d7-6f6a-47f1-90cb-d96cf0f8beb1"
     },
-    
-
+    {
+        name:"Blaze Pizza",
+        address:"3400 Lancaster Ave Unit 8, Philadelphia, PA 19104",
+        description:"Hip counter-serve pizzeria dishing up crispy, thin-crust pies made with creative toppings & sauces.",
+        id:"e3ee1aff-1f31-4bca-8a74-88dda767c93d"
+    },
 ]
 
 exports.places = places;
