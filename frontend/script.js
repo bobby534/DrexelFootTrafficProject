@@ -36,8 +36,10 @@ async function fetchAPI(){
             // Append data to div
             div.innerHTML += 
             `
+                <div>
                 <h1>${name}</h1>
                 ${description !== null ? `<h4>${description}</h4>` : ""}
+                </div>
                 <span>
                 ${cached.live ? `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this moment` : `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this time`}, at <strong>${Math.round(cached.percentage)}% capacity</strong>.
                 </span>

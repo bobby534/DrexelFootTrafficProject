@@ -12,17 +12,43 @@ h5 {
     opacity: 0.75;
 }
 
-div {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
 body{
     background-color: rgb(93, 93, 239);
 }
 
+div.place {
+    text-align: center;
+    padding: 5px;
+    border: 2px;
+    border-style: solid;
+    margin: 5px;
+}
+
+div.place > div > h1 {
+    margin-block-start: 0em;
+    margin-block-end: 0.1em;
+}
+
+div.place > div > h4 {
+    font-size: 14px;
+    margin-block-start: 0.1em;
+    margin-block-end: 0em;
+    font-weight: normal;
+}
+
+div.place > span {
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
+}
+
+div.place > div {
+    margin: 1.5em;
+}
+
 div.section {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 103%;
     border: 2px;
     border-style: solid;
@@ -34,16 +60,4 @@ div.section {
     /* Define padding inside of border */
     padding: 3%;
     background-color: rgb(210, 210, 74);
-}
-
-div.place {
-    text-align: center;
-    padding: 5px;
-    border: 2px;
-    border-style: solid;
-    margin: 5px;
-}
-
-div.place > h4 {
-    font-weight: normal;
 }
