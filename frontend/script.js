@@ -24,12 +24,14 @@ async function fetchAPI(){
 
     places.forEach(async element => {
         // Deconstruct element
-        const { name, address, id, description} = element;
+        const { name, address, id, description, cached } = element;
         // Get busyness
-        const busyness = await getBusy(id);
+        if (!element.hasOwnProperty("cached")) {
+            return
+        }
 
         // If busyness
-        if(busyness.success){           
+        if(element.cached.success){           
             let div = document.createElement('div');
             // Append data to div
             div.innerHTML += 
@@ -37,9 +39,9 @@ async function fetchAPI(){
                 Location / Place: ${name}<br><br>
                 Address: ${address}<br><br>
                 Description: ${description !== null ? description : "None"}<br><br>
-                Live: ${busyness.live}<br><br>
-                Busyness: ${busyness.busyness}<br><br>
-                Busyness Percentage: ${busyness.percentage} % <br><br>
+                Live: ${element.cached.live}<br><br>
+                Busyness: ${element.cached.busyness}<br><br>
+                Busyness Percentage: ${element.cached.percentage} % <br><br>
                 <br>
                 <br>
             `;
