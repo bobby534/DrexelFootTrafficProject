@@ -32,22 +32,20 @@ async function fetchAPI(){
         // If busyness
         if(cached.success){           
             let div = document.createElement('div');
+            div.className = "place";
             // Append data to div
             div.innerHTML += 
             `
-                Location / Place: ${name}<br><br>
-                Address: ${address}<br><br>
-                Description: ${description !== null ? description : "None"}<br><br>
-                Live: ${cached.live}<br><br>
-                Busyness: ${cached.busyness}<br><br>
-                Busyness Percentage: ${(cached.percentage).toFixed(2)} % <br><br>
-                <br>
-                <br>
+                <h1>${name}</h1>
+                ${description !== null ? `<h4>${description}</h4>` : ""}
+                <span>
+                ${cached.live ? `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this moment` : `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this time`}, at <strong>${Math.round(cached.percentage)}% capacity</strong>.
+                </span>
+                <h5>${address}</h5>
             `;
             // Append to locations div
             locationsDiv.append(div);
         }
-        
     });
 
     percentages.sort((a, b)=>{
