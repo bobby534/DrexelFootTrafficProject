@@ -88,3 +88,34 @@ nav img{
     transition: 1s;
 }
 
+#map-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#campus-map {
+    width: 98%;
+    height: 97%;
+    background: url('images/map.png') no-repeat center center;
+    background-size: cover;
+}
+
+.map-point {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#tooltip {
+    position: absolute;
+    display: none;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
