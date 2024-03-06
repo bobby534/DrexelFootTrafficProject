@@ -1,5 +1,49 @@
 const topBusyLocationsDiv = document.getElementById('topBusyLocations');
-const locationsDiv = document.getElementById('locations');
+let locationsDiv = document.getElementById('locations');
+const searchBar = document.getElementById('searchBar');
+
+function handleSearchInput(e){
+    let descendants = locationsDiv.getElementsByClassName('place');
+    if(e.keyCode == 8){
+        if(searchBar.value === ""){
+            return;
+        }
+        for (let i = 0; i < descendants.length; i++) {
+            const element = descendants[i];
+            const text = element.textContent;
+            let regex = new RegExp(searchBar.value, 'i');
+            let isMatch = regex.test(text.trim());
+
+            if(isMatch){
+                // Hide child
+                element.style.display = 'none';
+                if(element.style.display === 'none'){
+                    element.style.display = 'block';
+                }
+            }
+        }
+    }else{
+        for (let i = 0; i < descendants.length; i++) {
+            const element = descendants[i];
+            const placeText = element.textContent.toLowerCase().trim();
+            // UPDATE REGEX TO FULLY MATCH CORRECTLY
+            let query = searchBar.value.toLowerCase().trim();
+            let regex = new RegExp(query, 'i');
+            let isMatch = regex.test(placeText);
+
+            if(!isMatch){
+                // Hide child
+                element.style.display = 'none';
+            }
+        }
+   
+   }
+}
+
+searchBar.addEventListener('keyup',(e)=>{
+   handleSearchInput(e);
+});
+
 
 async function fetchAPI(){
     const response = await fetch('http://localhost:3000/places');
