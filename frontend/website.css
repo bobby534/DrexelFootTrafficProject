@@ -8,7 +8,7 @@
 .header {
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(0deg, rgb(31, 31, 90), rgb(22, 22, 95) 40%, rgb(14, 14, 96)), url(images/footprint.png);    
+    background: linear-gradient(0deg, rgb(83, 162, 245), rgb(17, 104, 198) 40%, rgb(2, 122, 250)), url(images/footprint.png);    
     background-position: center;
     background-size: cover;
     position: relative;
@@ -118,4 +118,70 @@ nav img{
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+/* contact page */
+
+.contact_name h1{
+    font-size: 62px;
+    text-align: center;
+    color: #fff;
+}
+.location{
+    width: 80%;
+    margin: auto;
+    padding: 80px 0;
+}
+
+.location iframe{
+    width: 100%;
+}
+
+.contact-info{
+    width: 80%;
+    margin: auto;
+}
+
+.contact-col{
+    flex-basis: 48%;
+    margin-bottom: 30px;
+}
+.contact-col div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.contact-col div p{
+    padding: 0;
+    color: #fff;
+}
+
+.contact-col div h5{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.contact-col input, .contact-col textarea{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+.submit-btn{
+    display: inline-block;
+    margin-bottom: 30px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #fff;
+    font-size: large;
+    padding: 12px 34px;
+    color: #fff;
+}
+
+.submit-btn:hover{
+    background: rgb(89, 89, 60);
+    transition: 1s;
 }
