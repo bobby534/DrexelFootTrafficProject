@@ -15,7 +15,14 @@
    <h1>Drexel Foot Traffic</h1> 
    <!-- Define locations div to display locations inside of-->
    <div id="topBusyLocations" class="section"></div>
-   <input type="text"  id="searchBar">
+    <input type="text"  id="searchBar">
+    <select id="sortLocationsSelect">
+        <option value="DescendingP">Descending (Percentage)</option>
+        <option value="AscendingP">Ascending (Percentage)</option>
+        <option value="DescendingA">Descending (Alphabetically)</option>
+        <option value="AscendingA">Ascending (Alphabetically)</option>
+    </select>
+    <button id="sortBtn">Sort</button>
    <div id="locations" class="section"></div>
 </body>
 </html>

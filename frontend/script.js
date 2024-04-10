@@ -1,48 +1,125 @@
 const topBusyLocationsDiv = document.getElementById('topBusyLocations');
 let locationsDiv = document.getElementById('locations');
 const searchBar = document.getElementById('searchBar');
+const sortLocationsSelect = document.getElementById('sortLocationsSelect');
+const sortBtn = document.getElementById('sortBtn');
 
-function handleSearchInput(e){
-    let descendants = locationsDiv.getElementsByClassName('place');
-    if(e.keyCode == 8){
-        if(searchBar.value === ""){
-            return;
-        }
-        for (let i = 0; i < descendants.length; i++) {
-            const element = descendants[i];
-            const text = element.textContent;
-            let regex = new RegExp(searchBar.value, 'i');
-            let isMatch = regex.test(text.trim());
 
-            if(isMatch){
-                // Hide child
-                element.style.display = 'none';
-                if(element.style.display === 'none'){
-                    element.style.display = 'block';
-                }
-            }
-        }
-    }else{
-        for (let i = 0; i < descendants.length; i++) {
-            const element = descendants[i];
-            const placeText = element.textContent.toLowerCase().trim();
-            // UPDATE REGEX TO FULLY MATCH CORRECTLY
-            let query = searchBar.value.toLowerCase().trim();
-            let regex = new RegExp(query, 'i');
-            let isMatch = regex.test(placeText);
-
-            if(!isMatch){
-                // Hide child
-                element.style.display = 'none';
-            }
-        }
-   
-   }
+function sortBusynessData(){
+    let sortType = sortLocationsSelect.value;
+    let divArray = Array.from(locationsDiv.querySelectorAll('div.place'));
+    // Sort based on select option value
+    switch(sortType){
+        // By busyness percentage descending.
+        case "DescendingP":
+            divArray.sort((a, b)=>{
+                let aPercentage = parseInt(a.querySelector('#placePercentage').textContent);
+                let bPercentage = parseInt(b.querySelector('#placePercentage').textContent);
+                return bPercentage - aPercentage;
+            });
+             // Reset/Clear locations div
+             locationsDiv.innerHTML = "";
+             locationsDiv.innerHTML += `<h1>Locations (Percentage Ascending):</h1>`;
+             divArray.forEach((place)=>{
+                 locationsDiv.appendChild(place);
+             });
+            break;
+            break;
+        // By busyness percentage ascending.
+        case "AscendingP":
+            divArray.sort((a, b)=>{
+                let aPercentage = parseInt(a.querySelector('#placePercentage').textContent);
+                let bPercentage = parseInt(b.querySelector('#placePercentage').textContent);
+                return aPercentage - bPercentage;
+            });
+             // Reset/Clear locations div
+             locationsDiv.innerHTML = "";
+             locationsDiv.innerHTML += `<h1>Locations (Percentage Ascending):</h1>`;
+             divArray.forEach((place)=>{
+                 locationsDiv.appendChild(place);
+             });
+             console.log(locationsDiv.childElementCount);
+            break;
+        // Alphabetically descending.
+        case "DescendingA":
+            divArray.sort((a, b)=>{
+                let aName = a.querySelector('#placeName').textContent;
+                let bName = b.querySelector('#placeName').textContent;
+                return bName.localeCompare(aName);
+            });
+            // Reset/Clear locations div
+            locationsDiv.innerHTML = "";
+            locationsDiv.innerHTML += `<h1>Locations (Alphabetical Descending):</h1>`;
+            divArray.forEach((place)=>{
+                locationsDiv.appendChild(place);
+            });
+            break;
+        // Alphabetically ascending.
+        case "AscendingA":            
+            divArray.sort((a, b)=>{
+                let aName = a.querySelector('#placeName').textContent;
+                let bName = b.querySelector('#placeName').textContent;
+                return aName.localeCompare(bName);
+            });
+            // Reset/Clear locations div
+            locationsDiv.innerHTML = "";
+            locationsDiv.innerHTML += `<h1>Locations (Alphabetical Ascending):</h1>`;
+            divArray.forEach((place)=>{
+                locationsDiv.appendChild(place);
+            });
+            break;
+        default:
+            return;    
+    }
 }
 
-searchBar.addEventListener('keyup',(e)=>{
-   handleSearchInput(e);
-});
+sortBtn.addEventListener('click', sortBusynessData);
+
+// FIX SEARCH BAR FUNCTIONALITY
+
+// function handleSearchInput(e){
+//     let descendants = locationsDiv.getElementsByClassName('place');
+//     if(e.keyCode == 8){
+//         if(searchBar.value === ""){
+//             return;
+//         }
+//         for (let i = 0; i < descendants.length; i++) {
+//             const element = descendants[i];
+//             const text = element.textContent;
+//             let regex = new RegExp(searchBar.value, 'i');
+//             let isMatch = regex.test(text.trim());
+
+//             if(isMatch){
+//                 // Hide child
+//                 element.style.display = 'none';
+//                 if(element.style.display === 'none'){
+//                     element.style.display = 'block';
+//                 }
+//             }
+//         }
+//     }else{
+//         for (let i = 0; i < descendants.length; i++) {
+//             const element = descendants[i];
+//             const placeText = element.textContent.toLowerCase().trim();
+//             // UPDATE REGEX TO FULLY MATCH CORRECTLY
+//             let query = searchBar.value.toLowerCase().trim();
+//             let regex = new RegExp(query, 'i');
+//             let isMatch = regex.test(placeText);
+
+//             if(!isMatch){
+//                 // Hide child
+//                 element.style.display = 'none';
+//             }
+//         }
+   
+//    }
+// }
+
+// FIX SEARCH BAR
+
+// searchBar.addEventListener('keyup',(e)=>{
+//    handleSearchInput(e);
+// });
 
 
 async function fetchAPI(){
@@ -52,7 +129,7 @@ async function fetchAPI(){
     //Append header to top busy locations div
     topBusyLocationsDiv.innerHTML += `<h1>Top Busy Locations:</h1>`
     // Append header to locations div
-    locationsDiv.innerHTML +=  `<h1>Locations (Alphabetical):</h1>`;
+    locationsDiv.innerHTML +=  `<h1>Locations (Alphabetical Ascending):</h1>`;
 
     // Sort elements in places array alphabetically
     places.sort((a,b)=>{
@@ -81,11 +158,11 @@ async function fetchAPI(){
             div.innerHTML += 
             `
                 <div>
-                <h1>${name}</h1>
+                <h1 id="placeName">${name}</h1>
                 ${description !== null ? `<h4>${description}</h4>` : ""}
                 </div>
                 <span>
-                ${cached.live ? `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this moment` : `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this time`}, at <strong>${Math.round(cached.percentage)}% capacity</strong>.
+                ${cached.live ? `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this moment` : `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this time`}, at <strong id="placePercentage">${Math.round(cached.percentage)}% capacity</strong>.
                 </span>
                 <h5>${address}</h5>
             `;
@@ -114,9 +191,6 @@ async function fetchAPI(){
         topBusyLocationsDiv.append(div);
 
     };
-
-
-
 }
 
 fetchAPI();
