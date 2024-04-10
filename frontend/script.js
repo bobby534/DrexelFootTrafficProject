@@ -38,7 +38,6 @@ function sortBusynessData(){
              divArray.forEach((place)=>{
                  locationsDiv.appendChild(place);
              });
-             console.log(locationsDiv.childElementCount);
             break;
         // Alphabetically descending.
         case "DescendingA":
