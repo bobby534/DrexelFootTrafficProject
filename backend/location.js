@@ -11,7 +11,7 @@ const busynessElementSelectors = ["div#i4", "div#i3", "div#i2", "div.i6w5N"]
 async function getLocationsData(places) {
     // Launch the browser in headless mode
     const browser = await puppeteer.launch({
-        headless: false, args: [
+        headless: true, args: [
             '--window-size=1920,600'
         ],
     });
@@ -119,7 +119,7 @@ async function getLocationsData(places) {
     }
 
     await browser.close();
-    return busyness;
+    return data;
 }
 
 exports.getLocationsData = getLocationsData
