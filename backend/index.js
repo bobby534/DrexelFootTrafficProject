@@ -6,18 +6,18 @@ app.use(cors())
 const port = 3000;
 
 let updating = false;
-const busyCache = new NodeCache();
+const locationCache = new NodeCache();
 const places = require("./places.json");
-const { getBusyness } = require("./google.js");
+const { getLocationsData } = require("./location.js");
 
 async function updatePlaces() {
     console.log("Updating places now...")
 
     updating = true
-    let busynessArray = await getBusyness(places);
+    let locationData = await getLocationsData(places);
     for (var place of places) {
-        if (busynessArray[place.id]) {
-            busyCache.set(place.id, busynessArray[place.id], 60 * 60)
+        if (locationData[place.id]) {
+            locationCache.set(place.id, locationData[place.id], 60 * 60)
         }
     }
     updating = false
@@ -31,7 +31,7 @@ async function updatePlaces() {
 app.get("/places", (_, res) => {
     let newPlaces = places;
     for (var place of newPlaces) {
-        place.cached = busyCache.get(place.id)
+        place.cached = locationCache.get(place.id)
     }
 
     return res.send(newPlaces);
@@ -42,7 +42,7 @@ app.get("/places/:id", (req, res) => {
 
     for (var place of places) {
         if (req.params.id === place.id) {
-            place.cached = busyCache.get(place.id)
+            place.cached = locationCache.get(place.id)
             return res.send(place);
         }
     }
