@@ -5,12 +5,40 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
 
 const isUpperCase = (string) => /^[A-Z]*$/.test(string)
+const busynessElements = ["div#i4", "div#i3", ""]
+
+
+async function getBusyness(places) {
+    // Launch the browser in headless mode
+    const browser = await puppeteer.launch({
+        headless: true, args: [
+            '--window-size=1920,600'
+        ],
+    });
+
+    // Disable geolocation permission to prevent unwanted popups
+    const context = browser.defaultBrowserContext();
+    context.overridePermissions("https://www.google.com", ["geolocation"])
+
+    // Create a new page
+    const page = await browser.newPage();
+
+    for (var place of places) {
+        // Search place on google maps and wait for it to load
+        await page.goto(`https://www.google.com/search?client=safari&rls=en&q=${encodeURIComponent(place.address + " " + place.name)}&ie=UTF-8&oe=UTF-8#ip=1`);
+        await page.waitForSelector("#result-stats")
+
+
+    }
+}
 
 async function getBusyness(place) {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: true, args: [
-        '--window-size=1920,600'
-      ], });
+    const browser = await puppeteer.launch({
+        headless: true, args: [
+            '--window-size=1920,600'
+        ],
+    });
     const context = browser.defaultBrowserContext();
     context.overridePermissions("https://www.google.com", ["geolocation"])
     const page = await browser.newPage();
@@ -68,7 +96,7 @@ async function getBusyness(place) {
     // Attempt to get percentage
     let bars = await page.$$(`[data-hour="${new Date().getHours()}"] > .kFDszc > div`);
     let percentage = 0;
-    for(let bar of bars){
+    for (let bar of bars) {
         let height = await page.evaluate(el => el.getAttribute("style"), bar);
         percentage = parseFloat(height.split(":")[1].replace("px;", ""));
     }
