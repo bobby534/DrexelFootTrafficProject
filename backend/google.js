@@ -5,13 +5,13 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
 
 const isUpperCase = (string) => /^[A-Z]*$/.test(string)
-const busynessElements = ["div#i4", "div#i3", ""]
+const busynessElementSelectors = ["div#i4", "div#i3", "div#i2", "div.i6w5N"]
 
 
 async function getBusyness(places) {
     // Launch the browser in headless mode
     const browser = await puppeteer.launch({
-        headless: true, args: [
+        headless: false, args: [
             '--window-size=1920,600'
         ],
     });
@@ -23,98 +23,85 @@ async function getBusyness(places) {
     // Create a new page
     const page = await browser.newPage();
 
+    // JSON object keyed by place ID
+    let busyness = {};
+
+    // Loop over each place
     for (var place of places) {
         // Search place on google maps and wait for it to load
-        await page.goto(`https://www.google.com/search?client=safari&rls=en&q=${encodeURIComponent(place.address + " " + place.name)}&ie=UTF-8&oe=UTF-8#ip=1`);
+        let failed = false;
+        let URL = `https://www.google.com/search?client=safari&rls=en&q=${encodeURIComponent(place.address + " " + place.name)}&ie=UTF-8&oe=UTF-8#ip=1`;
+        await page.goto(URL, { timeout: 3000 }).catch(async _ => {
+            await page.goto(URL, { timeout: 5000, waitUntil: 'networkidle2' }).catch(_ => {
+                failed = true;
+            });
+        });
+        if (failed) continue;
         await page.waitForSelector("#result-stats")
 
-
-    }
-}
-
-async function getBusyness(place) {
-    // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({
-        headless: true, args: [
-            '--window-size=1920,600'
-        ],
-    });
-    const context = browser.defaultBrowserContext();
-    context.overridePermissions("https://www.google.com", ["geolocation"])
-    const page = await browser.newPage();
-
-    // Search place on google maps
-    await page.goto(`https://www.google.com/search?client=safari&rls=en&q=${encodeURIComponent(place.address + " " + place.name)}&ie=UTF-8&oe=UTF-8#ip=1`);
-    await page.waitForSelector("#result-stats")
-
-    // Look for busyness element
-    let element = await page.$(`div#i4`);
-    if (!element) {
-        element = await page.$(`div#i3`);
-        if (!element) {
-            element = await page.$(`div#i2`);
-            if (!element) {
-                element = await page.$(`div.i6w5N`);
-                if (!element) {
-                    await browser.close();
-                    return { success: false, error: "could not find busyness element" };
-                }
+        // Check if busyness element is present
+        let busynessElementFound = false;
+        let busynessElement = null;
+        for (var elementSelector of busynessElementSelectors) {
+            busynessElement = await page.$(elementSelector);
+            if (busynessElement) {
+                busynessElementFound = true;
+                break;
             }
         }
-    }
 
-    // Click right time
-    const time = await page.$(`[data-hour="${new Date().getHours()}"]`);
-    if (!time) {
-        await browser.close();
-        return { success: false, error: "no busyness data" };
-    }
-    await time.click();
-    await new Promise(r => setTimeout(r, 500));
+        // If it is not present continue to next place
+        if (!busynessElementFound) continue;
 
-    // Keep checking for the value of the busyness element 3 times
-    let value = "";
-    for (let i = 0; i < 3; i++) {
-        value = await element.evaluate(el => el.textContent)
-        if (value != "") {
-            break
+        // Click right time
+        const time = await page.$(`[data-hour="${new Date().getHours()}"]`);
+        if (!time) continue;
+        await time.click();
+        await new Promise(r => setTimeout(r, 500));
+
+        // Keep checking for the value of the busyness element 3 times
+        let value = "";
+        for (let i = 0; i < 3; i++) {
+            value = await busynessElement.evaluate(el => el.textContent)
+            if (value != "") break;
+
+            await new Promise(r => setTimeout(r, 500));
         }
 
-        await new Promise(r => setTimeout(r, 500));
+        // If no value still found continue to next place
+        if (value == "") continue;
+
+        // Check if busyness is live
+        let live = false;
+        if (value.includes("Live")) live = true;
+
+        // Attempt to get percentage
+        let bars = await page.$$(`[data-hour="${new Date().getHours()}"] > .kFDszc > div`);
+        let percentage = 0;
+        for (let bar of bars) {
+            let height = await page.evaluate(el => el.getAttribute("style"), bar);
+            percentage = parseFloat(height.split(":")[1].replace("px;", ""));
+        }
+
+        // Validate the busyness status
+        value = value.split(":")[1].substring(1);
+        let status = value.charAt(0);
+        for (let i = 1; i < value.length; i++) {
+            let char = value.charAt(i);
+            if (isUpperCase(char)) break;
+            status += char;
+        }
+
+        // Put busyness in JSON object
+        busyness[place.id] = {
+            live: live,
+            status: status,
+            percentage: percentage
+        }
     }
 
-    // If no value still found return error
-    if (value == "") {
-        await browser.close();
-        return { success: false, error: "no busyness data" };
-    }
-
-    // Check if busyness is live
-    let live = false;
-    if (value.includes("Live")) live = true;
-
-    // Attempt to get percentage
-    let bars = await page.$$(`[data-hour="${new Date().getHours()}"] > .kFDszc > div`);
-    let percentage = 0;
-    for (let bar of bars) {
-        let height = await page.evaluate(el => el.getAttribute("style"), bar);
-        percentage = parseFloat(height.split(":")[1].replace("px;", ""));
-    }
-
-    // Close browser
     await browser.close();
-
-    // Validate the busyness status
-    value = value.split(":")[1].substring(1);
-    let busyness = value.charAt(0);
-    for (let i = 1; i < value.length; i++) {
-        let char = value.charAt(i);
-        if (isUpperCase(char)) break;
-        busyness += char;
-    }
-
-    // Return the busyness
-    return { success: true, live: live, busyness: busyness, percentage: (percentage / 75) * 100 };
+    return busyness;
 }
 
 exports.getBusyness = getBusyness
