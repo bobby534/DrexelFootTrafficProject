@@ -7,20 +7,17 @@ const port = 3000;
 
 let updating = false;
 const busyCache = new NodeCache();
-const { places } = require("./place.js");
+const places = require("./places.json");
 const { getBusyness } = require("./google.js");
 
 async function updatePlaces() {
     console.log("Updating places now...")
 
     updating = true
-    for (const place of places) {
-        let busyness = await getBusyness(place);
-        if (busyness.success) {
-            busyCache.set(place.id, busyness, 60 * 60)
-            console.log(`Succesfully cached busyness of ${place.name}: ${busyness.percentage}`)
-        } else {
-            console.log(`Failed to get busyness of ${place.name}`)
+    let busynessArray = await getBusyness(places);
+    for (var place of places) {
+        if (busynessArray[place.id]) {
+            busyCache.set(place.id, busynessArray[place.id], 60 * 60)
         }
     }
     updating = false
