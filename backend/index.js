@@ -3,7 +3,7 @@ const express = require('express');
 var cors = require('cors')
 const app = express();
 app.use(cors())
-const port = 3001;
+const port = 3000;
 
 let updating = false;
 const busyCache = new NodeCache();
