@@ -5,11 +5,12 @@ export function Place(props){
 
     return(
         <>
-            <div className={Styles.container}>
+            <div className={Styles.container} key={props.placeKey}>
                 <div className={Styles.placeName}>Place: {props.placeName}</div>
-                <div>Address: {props.placeAddress}</div>
-                <div>Description: {props.placeDescription}</div>
-                <div>Percentage: {props.placePercentage}</div>
+                <div><strong>Address:</strong> {props.placeAddress}</div>
+                <div><strong>Description:</strong> {props.placeDescription}</div>
+                <div><strong>Status:</strong> {props.placeStatus}</div>
+                <div><strong>Percentage:</strong> {props.placePercentage}%</div>
                 <div>
                     <strong style={{color: liveColor,}}>Live:</strong>
                     <div className={Styles.placeLive}> {props.placeLive ? "Live" : "Not Live"}</div>
@@ -24,7 +25,8 @@ Place.defaultProps = {
     placeAddress: "-",
     placeDescription: "-",
     placePercentage: "-%",
-    placeLive: false
+    placeLive: false,
+    placeStatus:"-"
 }
 
 export default Place
