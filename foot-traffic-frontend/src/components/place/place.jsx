@@ -5,7 +5,7 @@ export function Place(props){
 
     return(
         <>
-            <div className={Styles.container} key={props.placeKey}>
+            <div className={Styles.container}>
                 <div className={Styles.placeName}>Place: {props.placeName}</div>
                 <div><strong>Address:</strong> {props.placeAddress}</div>
                 <div><strong>Description:</strong> {props.placeDescription}</div>

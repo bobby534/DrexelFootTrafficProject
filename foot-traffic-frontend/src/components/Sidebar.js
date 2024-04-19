@@ -1,44 +1,38 @@
 // Author: Nathan Sherman 4/10/2024
 // Modified: Dawson De Mond 4/17/2024 
+// Modified: Nathan Sherman 4/19/2024
 import Place from './place/place'
 import Select from './select/select'
 import Header from './header/header'
-import fetchAPI from '../fetchAPI';
 
-async function getPlaces(){
-    const placesJSON = await fetchAPI();
-
-    let placesArray = [];
-
-    placesJSON.forEach(element => {
-        if(!element.hasOwnProperty("cached")){
-            return
+function mapPlaces(places) {
+    let placeElements = [];
+    for (var place of places) {
+        if (place.hasOwnProperty("cached")) {
+            placeElements.push(
+                <Place
+                    key={place.id}
+                    placeName={place.name}
+                    placeAddress={place.address}
+                    placeDescription={place.description}
+                    placePercentage={place.cached.busyness.percentage}
+                    placeLive={place.cached.busyness.live}
+                    placeStatus={place.cached.busyness.status}
+                />
+            )
         }
-
-        const {name, address, description, id, cached:{busyness:{live, percentage, status}, coordinates}} = element;
-        placesArray.push(
-            <Place 
-                placeKey={id}
-                placeName={name} 
-                placeAddress={address}
-                placeDescription={description}
-                placePercentage={percentage}
-                placeLive={live}
-                placeStatus={status}
-            />
-        );
-    });
-    return placesArray;
+    }
+    return placeElements;
 }
 
-let places = await getPlaces();
-
 export function Sidebar(props) {
+    const places = mapPlaces(props.places)
+
     return (
-        <div className="sidebar" style={{width: props.width, height: props.height}}>  
-           <Header header="Drexel Foot Traffic"/> 
-           <Select/>
-           {places}
+        <div className="sidebar" style={{ width: props.width, height: props.height }}>
+            <Header header="Drexel Foot Traffic" />
+            <Select />
+            {places}
         </div>
     )
 }
