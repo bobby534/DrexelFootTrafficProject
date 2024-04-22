@@ -84,6 +84,11 @@ async function getLocationsData(places) {
         }
 
         // Validate the busyness status
+        if (value.split(":").length <= 1) {
+            continue
+        }
+
+        // Extract the status
         value = value.split(":")[1].substring(1);
         let status = value.charAt(0);
         for (let i = 1; i < value.length; i++) {
