@@ -6,6 +6,7 @@ app.use(cors())
 const port = 3000;
 
 let updating = false;
+let lastUpdated = 0;
 const locationCache = new NodeCache();
 const places = require("./places.json");
 const { getLocationsData } = require("./location.js");
@@ -21,12 +22,21 @@ async function updatePlaces() {
         }
     }
     updating = false
+    lastUpdated = Math.floor(Date.now() / 1000);
 }
 
 (async function () {
     updatePlaces()
     setInterval(updatePlaces, 1000 * 60 * 30)
 })();
+
+app.get("/status", (_, res) => {
+    return res.send({
+        updating: updating,
+        lastUpdated: lastUpdated,
+        cacheSize: locationCache.stats.keys
+    });
+})
 
 app.get("/places", (_, res) => {
     let newPlaces = places;
