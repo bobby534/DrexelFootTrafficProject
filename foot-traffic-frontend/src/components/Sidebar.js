@@ -7,6 +7,7 @@ import Header from './header/header'
 
 function mapPlaces(places) {
     let placeElements = [];
+    console.log(places);
     for (var place of places) {
         if (place.hasOwnProperty("cached")) {
             placeElements.push(
@@ -30,7 +31,7 @@ export function Sidebar(props) {
 
     return (
         <div className="sidebar" style={{ width: props.width, height: props.height }}>
-            <Header header="Drexel Foot Traffic" />
+            <Header header="Drexel Foot Traffic" status={props.status} />
             <Select />
             {places}
         </div>

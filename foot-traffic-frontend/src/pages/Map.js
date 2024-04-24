@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import API from '../api/api';
 
 export function Map() {
+    const [status, setStatus] = useState({});
     const [places, setPlaces] = useState([]);
     const { height, width } = useWindowDimensions();
 
@@ -15,6 +16,7 @@ export function Map() {
             setTimeout(getPlaces, 10000);
             return
         }
+        setStatus(status.response);
 
         if (status.response.updating) {
             setTimeout(getPlaces, 10000);
@@ -38,8 +40,8 @@ export function Map() {
 
     return (
         <div className="wrapper">
-            <DrexelMap height={height} width={width * 3 / 4} places={places} />
-            <Sidebar height={height} width={width * 1 / 4} places={places} />
+            <DrexelMap height={height} width={width * 3 / 4} places={places}/>
+            <Sidebar height={height} width={width * 1 / 4} places={places} status={status}/>
         </div>
     )
 }
