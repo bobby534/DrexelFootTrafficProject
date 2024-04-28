@@ -1,24 +1,28 @@
 # CI 102 Lab 61 Group 08
 
+# Getting started
 
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Setting Up The Project:
+1. In gitlab, click on your profile near the top left of the screen.
+2. Click edit profile then, access tokens on the left.
+3. Click add new token.
+4. Create a new token name under Token Name, and under Select scopes, check read_repository and write_repository.
+5. Click Create personal access token.
+6. Save the token somewhere such as in a text file or word document.
+7. Copy the token.
+8. Open up a terminal. If you are on windows press ctrl+R and type in cmd and hit enter. If you are on  Mac press Command+Space to open Spotlight Search and type “Terminal” in the search field. Then, press Enter to open the Terminal app.
+9. In the terminal type cd followed by the path you would like to store the project. Example: "C:\Users\USERNAME\Desktop"
+10. Once you are in your desired path, type: 
+```
+git clone https://gitlab.cci.drexel.edu/fds24/ci10x-student-teams/61/08/ci-102-lab-61-group-08.git
+```
+11. Press enter.
+12. A prompt will appear asking you to authenticate. Enter your drexel email (e.g., abc123@drexel.edu) and the copied access token for the password. Hit enter.
+13. Setup complete!
 
 ## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.cci.drexel.edu/fds24/ci10x-student-teams/61/08/ci-102-lab-61-group-08.git
-git branch -M main
-git push -uf origin main
-```
 
 ## Integrate with your tools
 
