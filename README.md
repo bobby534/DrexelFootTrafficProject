@@ -1,6 +1,13 @@
 # CI 102 Lab 61 Group 08
 
 # Getting started
+## Dependencies:
+- Node JS
+- React JS
+
+Instructions on installation of dependencies is below.
+
+Be sure to follow this linearly if you are setting up for the first time.
 
 ## Setting Up The Project:
 1. In gitlab, click on your profile near the top left of the screen.
@@ -11,7 +18,10 @@
 6. Save the token somewhere such as in a text file or word document.
 7. Copy the token.
 8. Open up a terminal. If you are on windows press ctrl+R and type in cmd and hit enter. If you are on  Mac press Command+Space to open Spotlight Search and type “Terminal” in the search field. Then, press Enter to open the Terminal app.
-9. In the terminal type cd followed by the path you would like to store the project. Example: "C:\Users\USERNAME\Desktop"
+9. In the terminal type cd followed by the path you would like to store the project. Example: 
+```
+cd C:\Users\USERNAME\Desktop
+```
 10. Once you are in your desired path, type: 
 ```
 git clone https://gitlab.cci.drexel.edu/fds24/ci10x-student-teams/61/08/ci-102-lab-61-group-08.git
@@ -19,6 +29,39 @@ git clone https://gitlab.cci.drexel.edu/fds24/ci10x-student-teams/61/08/ci-102-l
 11. Press enter.
 12. A prompt will appear asking you to authenticate. Enter your drexel email (e.g., abc123@drexel.edu) and the copied access token for the password. Hit enter.
 13. Setup complete!
+
+## Installing Dependencies and Additional Setup
+Before installing dependencies, please be sure to complete the setting up the project section.
+
+**Instaling Node JS:**
+
+1. In your favorite browser, type node js. Click on the first link. It should be something like, nodejs.org
+2. Find the download section on the website.
+3. Download the latest version of node js. Be sure to select the version for your OS.
+4. Run the binary file after it completes downloading.
+5. Follow the prompts until the install is complete.
+
+**Additional Setup**
+1. Open up a terminal. If you are on windows press ctrl+R and type in cmd and hit enter. If you are on  Mac press Command+Space to open Spotlight Search and type “Terminal” in the search field. Then, press Enter to open the Terminal app.
+2. cd into the project path.
+3. When you are in the project path(root), type the following commands:
+```
+npm install
+```
+
+**Instaling React JS:**
+
+1. Open up a terminal. If you are on windows press ctrl+R and type in cmd and hit enter. If you are on  Mac press Command+Space to open Spotlight Search and type “Terminal” in the search field. Then, press Enter to open the Terminal app.
+2. cd into the project path.
+3. When you are in the project path, type the following commands:
+```
+cd .\foot-traffic-frontend\ -- Press Enter
+
+```
+4. Test by running the react-app
+```
+npm run start
+```
 
 ## Add your files
 
