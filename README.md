@@ -43,25 +43,63 @@ Before installing dependencies, please be sure to complete the setting up the pr
 
 **Additional Setup**
 1. Open up a terminal. If you are on windows press ctrl+R and type in cmd and hit enter. If you are on  Mac press Command+Space to open Spotlight Search and type “Terminal” in the search field. Then, press Enter to open the Terminal app.
-2. cd into the project path.
-3. When you are in the project path(root), type the following commands:
+2. cd into the project path (root).
+3. cd into the backend.
+```
+cd .\backend\
+```
+4. When you are in the backend folder, type the following commands:
 ```
 npm install
+```
+5. Test by running the backend with the following command (i.e., press ctrl+c to terminate the operation when finished).
+```
+node .
 ```
 
 **Instaling React JS:**
 
 1. Open up a terminal. If you are on windows press ctrl+R and type in cmd and hit enter. If you are on  Mac press Command+Space to open Spotlight Search and type “Terminal” in the search field. Then, press Enter to open the Terminal app.
-2. cd into the project path.
-3. When you are in the project path, type the following commands:
+2. cd into the project path (root).
+3. When you are in the project path, issue the following commands:
 ```
 cd .\foot-traffic-frontend\ -- Press Enter
-
+npm install --save-dev @babel/core @babel/preset-env babel-loader @babel/preset-react
+npm install --save react react-dom
 ```
-4. Test by running the react-app
+4. Test by running the react-app (i.e., if successful, the project should open in a new window).
 ```
 npm run start
 ```
+Dependency installation complete!
+
+
+## Testing
+
+To test the project complete the following **sequentially**.
+
+1. Open two seperate terminal windows.
+2. In both terminal windows head into your project root directory.
+3. In the first terminal issue the following commands:
+
+This will start the react-app. 
+
+Note: The react-app will not be populated until the backend is started.
+
+```
+cd .\foot-traffic-frontend\
+npm run start
+```
+4. In the second terminal issue the following commands:
+```
+cd .\backend\
+node .
+```
+
+This will start the backend API.
+
+After some time, the backend API shall complete initialization and you should see results populate on the react-app that was opened in a window.
+
 
 ## Add your files
 
