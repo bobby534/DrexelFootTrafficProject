@@ -1,13 +1,19 @@
 # CI 102 Lab 61 Group 08
-
+Last Modified: 4/28/2024 @ 10:28 am
 # Getting started
-## Dependencies:
+## Dependencies and Integrations:
 - Node JS
 - React JS
 
-Instructions on installation of dependencies is below.
+**Node JS:** Used to run JavaScript on the server-side, outside of a web browser.
+
+**React JS:** Used for building user interfaces, and reusable UI components.
+
+**Instructions on installation of dependencies is below.**
 
 Be sure to follow this sequentially if you are setting up for the first time.
+
+**Note: SETTING UP THE PROJECT AND INSTALLING DEPENDENCIES AND ADDITIONAL SETUP IS REQUIRED.**
 
 ## Setting Up The Project:
 1. In gitlab, click on your profile near the top left of the screen.
