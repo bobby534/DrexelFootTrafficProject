@@ -141,27 +141,28 @@ async function fetchAPI(){
 
     places.forEach(async element => {
         // Deconstruct element
-        const { name, address, description, cached } = element;
+        const { name, address, description, cached, hoursOfOperation } = element;
         // Get busyness
         if (!element.hasOwnProperty("cached")) {
-            return
+            return;
         }
-
-        percentages.push({name: name, percent: cached.percentage});
-
+    
+        percentages.push({ name: name, percent: cached.percentage });
+    
         // If busyness
-        if(cached.success){           
+        if (cached.success) {
             let div = document.createElement('div');
             div.className = "place";
             // Append data to div
-            div.innerHTML += 
-            `
+            div.innerHTML +=
+                `
                 <div>
-                <h1 id="placeName">${name}</h1>
-                ${description !== null ? `<h4>${description}</h4>` : ""}
+                    <h1 id="placeName">${name}</h1>
+                    ${description !== null ? `<h4>${description}</h4>` : ""}
+                    <p>Hours of Operation: ${hoursOfOperation}</p>
                 </div>
                 <span>
-                ${cached.live ? `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this moment` : `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this time`}, at <strong id="placePercentage">${Math.round(cached.percentage)}% capacity</strong>.
+                    ${cached.live ? `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this moment` : `${name} is <strong>${cached.busyness.toLowerCase()}</strong> at this time`}, at <strong id="placePercentage">${Math.round(cached.percentage)}% capacity</strong>.
                 </span>
                 <h5>${address}</h5>
             `;
@@ -169,6 +170,7 @@ async function fetchAPI(){
             locationsDiv.append(div);
         }
     });
+    
 
     percentages.sort((a, b)=>{
         return b.percent - a.percent;

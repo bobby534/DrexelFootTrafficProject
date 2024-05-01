@@ -3,7 +3,9 @@
         "name": "Buckley Green",
         "address": "30 N 33rd St, Philadelphia, PA 19104",
         "description": "Straightforward park at Drexel University with volleyball courts, a BBQ grill & more.",
-        "id": "fc262f75-4992-4d9a-8a15-df0584602eb"
+        "id": "fc262f75-4992-4d9a-8a15-df0584602eb",
+        "hoursOfOperation": "Open 24 hours"
+        
     },
     {
         "name": "Daskalakis Athletic Center",
