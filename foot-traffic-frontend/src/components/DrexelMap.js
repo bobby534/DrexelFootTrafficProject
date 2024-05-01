@@ -32,12 +32,12 @@ function MapFeatures(places) {
 
 export function DrexelMap(props) {
   const features = MapFeatures(props.places);
-
   return (
     <Map
       height={props.height}
       width={props.width}
       defaultCenter={[39.9566, -75.1899]}
+      center={props.focus}
       defaultZoom={17}
       maxZoom={20}
       minZoom={16}

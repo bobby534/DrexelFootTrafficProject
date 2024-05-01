@@ -5,9 +5,14 @@ import Sidebar from "../components/Sidebar";
 import API from '../api/api';
 
 export function Map() {
+    const [focus, setFocus] = useState([]);
     const [status, setStatus] = useState({});
     const [places, setPlaces] = useState([]);
     const { height, width } = useWindowDimensions();
+
+    const handleFocus = (coords) => {
+        setFocus(coords)
+    }
 
     // Fetch places from API and set the state
     const getPlaces = async () => {
@@ -40,8 +45,8 @@ export function Map() {
 
     return (
         <div className="wrapper">
-            <DrexelMap height={height} width={width * 3 / 4} places={places}/>
-            <Sidebar height={height} width={width * 1 / 4} places={places} status={status}/>
+            <DrexelMap focus={focus} height={height} width={width * 3 / 4} places={places}/>
+            <Sidebar handleFocus={handleFocus} height={height} width={width * 1 / 4} places={places} status={status}/>
         </div>
     )
 }

@@ -30,12 +30,6 @@
         "id": "ad75121e-d95b-450c-bbb3-60c138f69785"
     },
     {
-        "name": "Library Learning Terrace",
-        "address": "Race Street Hall, 3300 Market St",
-        "description": null,
-        "id": "a10885e2-4d2a-47aa-bb52-a5abe2cbba87"
-    },
-    {
         "name": "Northside Dining Terrace",
         "address": "203 N 34th St, Philadelphia, PA 19104",
         "description": "Cafeteria",
@@ -153,6 +147,12 @@
         "name": "Market St & 38th St",
         "address": "Philadelphia, PA 19104",
         "description": "Bus stop",
-        "id": "Bus stop"
+        "id": "71cc0477-e724-45bb-873d-e802c16efdd1"
+    },
+    {
+        "name": "Sabrina's Cafe",
+        "address": "227 N 34th St, Philadelphia, PA 19104",
+        "description": "Relaxed New American cafe with a devoted following for its breakfast & brunch offerings.",
+        "id": "c655a478-00c6-41fd-9d94-5ed7f9549e27"
     }
 ]

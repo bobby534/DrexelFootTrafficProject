@@ -13,7 +13,9 @@
     border: 2px solid hsl(0, 18%, 97%);
     border-radius: 5px;
     box-shadow: 7px 7px 5px .5px rgba(0, 0, 0, 0.2);
+    user-select: none;
 }
+
 .container:hover{
     background-color: hsl(0, 5%, 88%);
     cursor: pointer;

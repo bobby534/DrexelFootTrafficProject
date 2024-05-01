@@ -5,13 +5,13 @@ import Place from './place/place'
 import Select from './select/select'
 import Header from './header/header'
 
-function mapPlaces(places) {
+function mapPlaces(places, handleFocus) {
     let placeElements = [];
-    console.log(places);
     for (var place of places) {
         if (place.hasOwnProperty("cached")) {
             placeElements.push(
                 <Place
+                    handleFocus={handleFocus}
                     key={place.id}
                     placeName={place.name}
                     placeAddress={place.address}
@@ -19,6 +19,7 @@ function mapPlaces(places) {
                     placePercentage={place.cached.busyness.percentage}
                     placeLive={place.cached.busyness.live}
                     placeStatus={place.cached.busyness.status}
+                    placeCoordinates={place.cached.coordinates}
                 />
             )
         }
@@ -27,7 +28,7 @@ function mapPlaces(places) {
 }
 
 export function Sidebar(props) {
-    const places = mapPlaces(props.places)
+    const places = mapPlaces(props.places, props.handleFocus)
 
     return (
         <div className="sidebar" style={{ width: props.width, height: props.height }}>
