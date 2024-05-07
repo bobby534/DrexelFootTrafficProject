@@ -5,7 +5,7 @@ const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 
 let userMessage = null; // Variable to store user's message
-const API_KEY = "sk-proj-us0eHI4DLiQ8oUH1R3ghT3BlbkFJZ2iCeLFecWiuGoCKiVwl";
+const API_KEY = "sk-proj-HB0EyA7AwILyak1goutBT3BlbkFJvhmuvl2YsGwKpqKP8G6C"; // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -18,9 +18,9 @@ const createChatLi = (message, className) => {
     return chatLi; // return chat <li> element
 }
 
-const generateResponse = (incomingChatLi) => {
+const generateResponse = (chatElement) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
-    const messageElement = incomingChatLi.querySelector("p");
+    const messageElement = chatElement.querySelector("p");
 
     // Define the properties and message for the API request
     const requestOptions = {
@@ -55,15 +55,14 @@ const handleChat = () => {
     // Append the user's message to the chatbox
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
     chatbox.scrollTo(0, chatbox.scrollHeight);
-
+    
     setTimeout(() => {
         // Display "Thinking..." message while waiting for the response
         const incomingChatLi = createChatLi("Thinking...", "incoming");
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
         generateResponse(incomingChatLi);
-    }, 3000);
-    
+    }, 600);
 }
 
 chatInput.addEventListener("input", () => {
