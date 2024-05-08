@@ -1,14 +1,24 @@
 /*// Author: Dawson De Mond 4/17/2024*/
+// Modified: Dawson De Mond 5/8/2024
 
+
+import { useState } from 'react';
 import Styles from './select.module.css'
-function select(){
+
+
+
+function handleChange(event, setSortOption){
+    setSortOption(event.target.value);
+}
+
+function select(props){
     return(
     <>
-        <select className={Styles.select}>
-            <option>Descending (Percentage)</option>
-            <option>Ascending (Percentage)</option>
-            <option>Descending (Alphabetically)</option>
-            <option>Ascending (Alphabetically)</option>
+        <select onChange={(e)=>{handleChange(e, props.setSortOption);}}className={Styles.select}>
+            <option value="DP">Descending (Percentage)</option>
+            <option value="AP">Ascending (Percentage)</option>
+            <option value="DA">Descending (Alphabetically)</option>
+            <option value="AA">Ascending (Alphabetically)</option>
         </select>
     </>
     );
