@@ -5,7 +5,10 @@ export function Place(props){
 
     return(
         <>
-            <div onClick={()=> props.handleFocus(props.placeCoordinates)}className={Styles.container}>
+            <div onClick={()=> {
+                props.handleFocus(props.placeCoordinates);
+                props.setMarker([parseFloat(props.placeCoordinates[0]), parseFloat(props.placeCoordinates[1])]);
+            }}className={Styles.container}>
                 <div className={Styles.placeName}>Place: {props.placeName}</div>
                 <div><strong>Address:</strong> {props.placeAddress}</div>
                 <div><strong>Description:</strong> {props.placeDescription}</div>

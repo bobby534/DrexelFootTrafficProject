@@ -8,6 +8,7 @@ export function Map() {
     const [focus, setFocus] = useState([]);
     const [status, setStatus] = useState({});
     const [places, setPlaces] = useState([]);
+    const [markerCoords, setMarker] = useState([39.9566, -75.1899]);
     const { height, width } = useWindowDimensions();
 
     const handleFocus = (coords) => {
@@ -45,8 +46,8 @@ export function Map() {
 
     return (
         <div className="wrapper">
-            <DrexelMap focus={focus} height={height} width={width * 3 / 4} places={places}/>
-            <Sidebar handleFocus={handleFocus} height={height} width={width * 1 / 4} places={places} status={status}/>
+            <DrexelMap markerCoords={markerCoords} focus={focus} height={height} width={width * 3 / 4} places={places}/>
+            <Sidebar setMarker={setMarker} handleFocus={handleFocus} height={height} width={width * 1 / 4} places={places} status={status}/>
         </div>
     )
 }

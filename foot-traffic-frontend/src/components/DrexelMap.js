@@ -1,6 +1,6 @@
 // Modified: Dawson De Mond 4/24/2024
 import React from 'react';
-import { Map, GeoJson, GeoJsonFeature } from "pigeon-maps"
+import { Map, GeoJson, GeoJsonFeature, Marker } from "pigeon-maps"
 import { maptiler } from 'pigeon-maps/providers'
 import interpolateRGB from '../utils/interpolation';
 const maptilerProvider = maptiler('we4hc2pgxyp5biKojrCC', 'streets-v2')
@@ -46,6 +46,10 @@ export function DrexelMap(props) {
       <GeoJson >
         {features}
       </GeoJson>
+      <Marker 
+      anchor={props.markerCoords}
+      color='RED'
+      />
     </Map>
   )
 }

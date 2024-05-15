@@ -7,12 +7,13 @@ import Select from './select/select'
 import Header from './header/header'
 import { useState } from 'react';
 
-function mapPlaces(places, handleFocus, sortOption) {
+function mapPlaces(places, handleFocus, sortOption, setMarkerCallBack) {
     let placeElements = [];
     for (var place of places) {
         if (place.hasOwnProperty("cached")) {
             placeElements.push(
                 <Place
+                    setMarker={setMarkerCallBack}
                     handleFocus={handleFocus}
                     key={place.id}
                     placeName={place.name}
@@ -57,7 +58,7 @@ function mapPlaces(places, handleFocus, sortOption) {
 export function Sidebar(props) {
 
     const [sortOption, setSortOption] = useState('DP');
-    const places = mapPlaces(props.places, props.handleFocus, sortOption);
+    const places = mapPlaces(props.places, props.handleFocus, sortOption, props.setMarker);
 
     return (
         <div className="sidebar" style={{ width: props.width, height: props.height }}>
