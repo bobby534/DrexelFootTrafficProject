@@ -10,7 +10,7 @@ function MapFeatures(places) {
   let featureElements = [];
   for (var place of places) {
     if (place.hasOwnProperty("cached")) {
-      if(place.cached.coordinates.length != 2) continue;
+      if(place.cached.coordinates.length !== 2) continue;
       let interpolatedRGB = interpolateRGB({r:0,g:255,b:75}, {r:255,g:0,b:0}, place.cached.busyness.percentage);
       featureElements.push(
         <GeoJsonFeature 
