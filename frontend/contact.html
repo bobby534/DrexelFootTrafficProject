@@ -65,18 +65,17 @@
 
         <div class="chatbot">
           <header>
-            <h2>Chatbot</h2>
+            <h2>FAQ</h2>
             <span class="close-btn material-symbols-outlined">close</span>
           </header>
-          <ul class="chatbox">
-            <li class="chat incoming">
-              <span class="material-symbols-outlined">smart_toy</span>
-              <p>Hi there 👋<br>How can I help you today?</p>
-            </li>
+          <ul class="faq-list">
+            <li class="faq-item" data-answer="Of course, there are still tons of space to improve, like user experience and the technical side, but we're not sure if we will continue to work on it.">Will this  project continue to get improved upon?</li>
+            <li class="faq-item" data-answer="Possibly, but it isn't avaiable to the public yet">Can anyone use this website?</li>
+            <li class="faq-item" data-answer="We try our best to gather accurate data, through a variety of APIs and tests.">Are the data accurate?</li>
+            <li class="faq-item" data-answer="100%">What are the chances this project get bought by a rich investor?</li>
           </ul>
-          <div class="chat-input">
-            <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
-            <span id="send-btn" class="material-symbols-rounded">send</span>
+          <div class="answer-box">
+            <p class="answer"></p>
           </div>
         </div>
       </div>
@@ -84,6 +83,7 @@
     
   <script src="https://web3forms.com/client/script.js" async defer></script>
   <script src="chatbot.js"></script>
+
 
   </section>
 

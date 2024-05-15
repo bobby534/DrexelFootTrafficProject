@@ -8,7 +8,7 @@
 .header {
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(0deg, rgb(83, 162, 245), rgb(17, 104, 198) 40%, rgb(2, 122, 250)), url(images/footprint.png);    
+    background: linear-gradient(0deg, rgb(83, 162, 245), rgb(17, 104, 198) 40%, rgb(2, 122, 250));    
     background-position: center;
     background-size: cover;
     position: relative;
@@ -271,24 +271,6 @@ header h2 {
   list-style: none;
 }
 
-.chatbox .outgoing {
-  margin: 20px 0;
-  justify-content: flex-end;
-}
-
-.chatbox .incoming span {
-  width: 32px;
-  height: 32px;
-  color: #fff;
-  cursor: default;
-  text-align: center;
-  line-height: 32px;
-  align-self: flex-end;
-  background: #0026ff;
-  border-radius: 4px;
-  margin: 0 10px 7px 0;
-}
-
 .chatbox .chat p {
   white-space: pre-wrap;
   padding: 12px 16px;
@@ -299,54 +281,30 @@ header h2 {
   background: #00d0ff;
 }
 
-.chatbox .incoming p {
-  border-radius: 10px 10px 10px 0;
+
+/* FAQ Styles */
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.chatbox .chat p.error {
-  color: #721c24;
-  background: #f8d7da;
-}
-
-.chatbox .incoming p {
-  color: #16266a;
+.faq-item {
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  cursor: pointer;
   background: #f2f2f2;
 }
 
-/* Chat Input Area */
-.chatbot .chat-input {
-  display: flex;
-  gap: 5px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.faq-item:hover {
+  background: #e0e0e0;
+}
+
+.answer-box {
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
   background: #fff;
-  padding: 3px 20px;
-  border-top: 1px solid #ddd;
-}
-
-.chat-input textarea {
-  height: 55px;
-  width: 100%;
-  border: none;
-  outline: none;
-  resize: none;
-  max-height: 90px;
-  padding: 15px 15px 15px 0;
-  font-size: 0.95rem;
-}
-
-.chat-input span {
-  align-self: flex-end;
-  color: #2b2eed;
-  cursor: pointer;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  visibility: hidden;
-  font-size: 1.35rem;
-}
-
-.chat-input textarea:valid ~ span {
-  visibility: visible;
+  display: none;
 }
